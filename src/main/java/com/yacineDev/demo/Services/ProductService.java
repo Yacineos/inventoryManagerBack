@@ -69,14 +69,15 @@ public class ProductService {
 
     @Transactional
     public Product updateProduct(Product product){
+        System.out.println("Product : "+product.getId());
         return productRepo.save(product);
     }
     @Transactional
-    public Product findProductById(Long id){
+    public Product findProductById(int id){
         return productRepo.findProductById(id).orElseThrow(() -> new ProductNotFoundException("Product By id : "+id+" was not found "));
     }
 
-    public void deleteProduct(Long id){
+    public void deleteProduct(int id){
         productRepo.deleteProductById(id);
     }
 }

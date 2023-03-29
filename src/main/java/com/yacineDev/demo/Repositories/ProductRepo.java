@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface ProductRepo extends JpaRepository<Product,Long> {
     @Query(value="DELETE FROM produit WHERE id_produit = ?1",nativeQuery = true)
-    void deleteProductById(Long id);
+    void deleteProductById(int id);
     @Query(value="SELECT * FROM produit",nativeQuery = true)
     List<Product> findAllProducts();
     @Query(value="SELECT * FROM produit ORDER BY nom",nativeQuery = true)
@@ -33,7 +33,12 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
     @Query(value="SELECT * FROM produit WHERE nom LIKE %?1% OR category LIKE %?1% ",nativeQuery = true)
     List<Product> findProductsByInput(String input);
     @Query(value="SELECT * FROM produit WHERE id_produit = ?1",nativeQuery = true)
-    Optional<Product> findProductById(Long id);
+    Optional<Product> findProductById(int id);
+
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE produit SET produit_en_stock = produit_en_stock + ?1 WHERE id_produit = ?2",nativeQuery = true)
+    void addQuantity(int quantity,int id);
 
 
 }

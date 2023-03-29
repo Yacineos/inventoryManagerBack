@@ -70,9 +70,15 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
     @PostMapping("/add")
-    public ResponseEntity<List<Product>> addProduct(Product product){
+    public ResponseEntity<List<Product>> addProduct(@RequestBody Product product){
         Product newProduct = productService.addProduct(product);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    @PostMapping("/update")
+    public ResponseEntity<List<Product>> updateProduct(@RequestBody Product product){
+        System.out.println("update product"+ product.getId() +" "+ product.getName());
+        Product updateProduct = productService.updateProduct(product);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
