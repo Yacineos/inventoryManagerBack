@@ -13,7 +13,7 @@ public class Fournit {
     private Long idF;
 
     @Column(name="id_produit")
-    private int id_produit;
+    private Long id_produit;
 
     @Column(name="qte_produit")
     private int qte_produit;
@@ -26,7 +26,7 @@ public class Fournit {
     public Fournit() {
     }
 
-    public Fournit(Long idF, int idProduit, int qte_produit, Date dateF) {
+    public Fournit(Long idF, Long idProduit, int qte_produit, Date dateF) {
         this.idF = idF;
         this.id_produit = idProduit;
         this.qte_produit = qte_produit;
@@ -41,11 +41,11 @@ public class Fournit {
         this.idF = idF;
     }
 
-    public int getIdProduit() {
+    public Long getIdProduit() {
         return id_produit;
     }
 
-    public void setIdProduit(int idProduit) {
+    public void setIdProduit(Long idProduit) {
         this.id_produit = idProduit;
     }
 

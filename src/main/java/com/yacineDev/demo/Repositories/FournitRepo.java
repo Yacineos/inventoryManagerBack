@@ -17,7 +17,7 @@ public interface FournitRepo extends JpaRepository<Fournit,Long>{
     @Modifying
     @Transactional
     @Query(value="INSERT INTO fournit (idF , id_produit , qte_produit , dateF ) VALUES (?1,?2,?3,?4) ",nativeQuery = true)
-    void addFournit(Long idF,int idP , int quantite , LocalDate date);
+    void addFournit(Long idF,Long idP , int quantite , LocalDate date);
 
     @Query(value="SELECT * FROM fournit",nativeQuery = true)
     List<Fournit> findAllFournit();

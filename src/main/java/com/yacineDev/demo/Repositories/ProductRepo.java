@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface ProductRepo extends JpaRepository<Product,Long> {
     @Query(value="DELETE FROM produit WHERE id_produit = ?1",nativeQuery = true)
-    void deleteProductById(int id);
+    void deleteProductById(Long id);
     @Query(value="SELECT * FROM produit",nativeQuery = true)
     List<Product> findAllProducts();
     @Query(value="SELECT * FROM produit ORDER BY nom",nativeQuery = true)
@@ -33,12 +33,23 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
     @Query(value="SELECT * FROM produit WHERE nom LIKE %?1% OR category LIKE %?1% ",nativeQuery = true)
     List<Product> findProductsByInput(String input);
     @Query(value="SELECT * FROM produit WHERE id_produit = ?1",nativeQuery = true)
-    Optional<Product> findProductById(int id);
+    Optional<Product> findProductById(Long id);
+
 
     @Modifying
     @Transactional
     @Query(value="UPDATE produit SET produit_en_stock = produit_en_stock + ?1 WHERE id_produit = ?2",nativeQuery = true)
-    void addQuantity(int quantity,int id);
+    void addQuantity(int quantity,Long id);
+
+    @Modifying
+    @Transactional
+    @Query(value="INSERT INTO produit (id_produit , nom , category , prix_unitaire ,priix_de_revient, produit_enstock) VALUES (?1,?2,?3,?4,?5,0)" , nativeQuery = true)
+    List<Product> addProduct(int id_produit , String nom , String category , String prix_unitaire , String prix_de_revient , int produit_en_stock);
+
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE produit SET nom = ?1, category=?2 , prix_unitaire=?3 , prix_de_revient=?4 WHERE id_produit=?33" , nativeQuery = true)
+    List<Product> updateproduct(int id_produit) ;
 
 
 }

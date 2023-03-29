@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -23,6 +24,10 @@ public class ProductService {
     }
     @Transactional
     public Product addProduct(Product product){
+        Optional<Product> product1 = productRepo.findProductById(product.getId());
+        if(product1 != null){
+
+        }
         return productRepo.save(product);
     }
     @Transactional
@@ -73,11 +78,11 @@ public class ProductService {
         return productRepo.save(product);
     }
     @Transactional
-    public Product findProductById(int id){
+    public Product findProductById(Long id){
         return productRepo.findProductById(id).orElseThrow(() -> new ProductNotFoundException("Product By id : "+id+" was not found "));
     }
 
-    public void deleteProduct(int id){
+    public void deleteProduct(Long id){
         productRepo.deleteProductById(id);
     }
 }
