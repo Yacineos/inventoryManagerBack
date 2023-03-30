@@ -25,10 +25,10 @@ public class ProductService {
     @Transactional
     public Product addProduct(Product product){
         Optional<Product> product1 = productRepo.findProductById(product.getId());
-        if(product1 != null){
-
+        if(!product1.isPresent()) {
+            productRepo.addProduct(product.getId(), product.getName(), product.getCategory(), product.getPrice(),product.getPrix_de_revient());
         }
-        return productRepo.save(product);
+        return null;
     }
     @Transactional
     public List<Product> findAllProducts(){
@@ -84,5 +84,10 @@ public class ProductService {
 
     public void deleteProduct(Long id){
         productRepo.deleteProductById(id);
+    }
+
+    @Transactional
+    public void addQuantity(int quantity, Long id){
+        productRepo.addQuantity(quantity, id);
     }
 }

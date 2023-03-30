@@ -81,5 +81,11 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping("/addQte/{id}/{qte}")
+    public ResponseEntity<List<Product>> addQte(@PathVariable("id") Long id,@PathVariable("qte") int qte){
+        productService.addQuantity(qte,id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }

@@ -43,13 +43,13 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
 
     @Modifying
     @Transactional
-    @Query(value="INSERT INTO produit (id_produit , nom , category , prix_unitaire ,priix_de_revient, produit_enstock) VALUES (?1,?2,?3,?4,?5,0)" , nativeQuery = true)
-    List<Product> addProduct(int id_produit , String nom , String category , String prix_unitaire , String prix_de_revient , int produit_en_stock);
+    @Query(value="INSERT INTO produit (id_produit , nom , category , prix_unitaire ,prix_de_revient, produit_en_stock) VALUES (?1,?2,?3,?4,?5,0)" , nativeQuery = true)
+    void addProduct(Long id_produit , String nom , String category , float prix_unitaire , float prix_de_revient);
 
     @Modifying
     @Transactional
     @Query(value="UPDATE produit SET nom = ?1, category=?2 , prix_unitaire=?3 , prix_de_revient=?4 WHERE id_produit=?33" , nativeQuery = true)
-    List<Product> updateproduct(int id_produit) ;
+    void updateproduct(int id_produit) ;
 
 
 }

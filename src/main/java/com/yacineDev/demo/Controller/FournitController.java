@@ -24,7 +24,15 @@ public class FournitController {
     }
     @PostMapping("/add")
     public ResponseEntity<Fournit> addFournit(@RequestBody Fournit fournit){
+        System.out.println(fournit.getQte_produit());
+        System.out.println(fournit.getIdF());
+        System.out.println(fournit.getIdProduit());
         fournitService.addFournit(fournit.getIdF(),fournit.getIdProduit(),fournit.getQte_produit());
+        return new ResponseEntity<>(fournit, HttpStatus.OK);
+    }
+    @PostMapping("/addH")
+    public ResponseEntity<Fournit> addFournitHatba(@RequestBody Fournit fournit){
+        fournitService.addFournitHatba(fournit.getIdF(),fournit.getIdProduit(),fournit.getQte_produit());
         return new ResponseEntity<>(fournit, HttpStatus.OK);
     }
 }

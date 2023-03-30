@@ -27,16 +27,20 @@ public class FournitService {
     }
     @Transactional
     public void addFournit(Long idF,Long idP , int quantite ){
-        Optional<Product> produit = productRepo.findProductById(idP);
-        if(produit != null) {
-            productRepo.addQuantity(quantite, idP);
+            System.out.println(idF+" "+idP+" "+quantite);
             fournitRepo.addFournit(idF, idP, quantite, LocalDate.now());
-        }else{
-        }
-        }
+            System.out.println("Fournit added");
+            productRepo.addQuantity(quantite, idP);
+            System.out.println("Quantity added");
+    }
     @Transactional
     public List<Fournit> getAllFournit(){
         return fournitRepo.findAllFournit();
+    }
+
+    @Transactional
+    public void addFournitHatba(Long idF,Long idP , int quantite ){
+        fournitRepo.addFournit(idF, idP, quantite, LocalDate.now());
     }
 
 }
