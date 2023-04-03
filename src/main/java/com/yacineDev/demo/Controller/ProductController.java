@@ -87,5 +87,12 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping("/subtractQuantity/{id}/{qte}")
+    public ResponseEntity<List<Product>> subtractQuantity(@PathVariable("id") Long id,@PathVariable("qte") int qte){
+        productService.subtractQuantity(qte,id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
 }

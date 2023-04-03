@@ -90,4 +90,9 @@ public class ProductService {
     public void addQuantity(int quantity, Long id){
         productRepo.addQuantity(quantity, id);
     }
+
+    @Transactional
+    public void subtractQuantity(int quantity, Long id){
+        productRepo.subtractQuantity(quantity, id);
+    }
 }

@@ -43,6 +43,11 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
 
     @Modifying
     @Transactional
+    @Query(value="UPDATE produit SET produit_en_stock = produit_en_stock - ?1 WHERE id_produit = ?2",nativeQuery = true)
+    void subtractQuantity(int quantity,Long id);
+
+    @Modifying
+    @Transactional
     @Query(value="INSERT INTO produit (id_produit , nom , category , prix_unitaire ,prix_de_revient, produit_en_stock) VALUES (?1,?2,?3,?4,?5,0)" , nativeQuery = true)
     void addProduct(Long id_produit , String nom , String category , float prix_unitaire , float prix_de_revient);
 
@@ -50,6 +55,7 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
     @Transactional
     @Query(value="UPDATE produit SET nom = ?1, category=?2 , prix_unitaire=?3 , prix_de_revient=?4 WHERE id_produit=?33" , nativeQuery = true)
     void updateproduct(int id_produit) ;
+
 
 
 }
