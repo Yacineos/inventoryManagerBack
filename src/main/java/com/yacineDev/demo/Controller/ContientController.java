@@ -40,9 +40,9 @@ public class ContientController {
         return new ResponseEntity<>(contients,HttpStatus.OK);
     }
 
-    @PostMapping("/addContient/{id_commande}/{id_produit}/{quantite}")
-    public void addContient(@PathVariable("id_commande") Long id_commande ,@PathVariable("id_produit") Long id_produit ,@PathVariable("quantite") int quantite){
-        contientService.addContient(id_commande , id_produit , quantite);
+    @PostMapping("/addContient")
+    public void addContient(@RequestBody Contient contient){
+        contientService.addContient(contient.getId().getIdCommande(), contient.getId().getIdProduit(), contient.getQte_produit());
     }
 
     @DeleteMapping("/deleteContientByIdCommande/{id}")
@@ -50,9 +50,9 @@ public class ContientController {
         contientService.deleteContientByIdCommande(id);
     }
 
-    @PostMapping("/updateContient/{quantite}/{id_commande}/{id_produit}")
-    public void updateContient(@PathVariable("quantite") int quantite,@PathVariable("id_commande") Long id_commande,@PathVariable("id_produit") Long id_produit){
-        contientService.updateContient(quantite,id_commande,id_produit);
+    @PostMapping("/update")
+    public void updateContient(@RequestBody Contient contient){
+        contientService.updateContient(contient.getQte_produit(),contient.getId().getIdCommande(), contient.getId().getIdProduit());
     }
 
 }
