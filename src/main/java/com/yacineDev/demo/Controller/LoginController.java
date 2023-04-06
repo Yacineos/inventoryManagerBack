@@ -21,9 +21,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public Map<String, Object> login(@RequestBody LoginRequest loginRequest) {
-        String username = loginRequest.getUsername();
+        long idEmployee = loginRequest.getIdEmployee();
         String password = loginRequest.getPassword();
-        Optional<Employee> employee = employeeRepository.findByUsernameAndPassword(username, password);
+        Optional<Employee> employee = employeeRepository.findByIdAndPassword(idEmployee, password);
         if (employee.isPresent()) {
             // Authentication successful, return success response
             Map<String, Object> response = new HashMap<>();

@@ -1,15 +1,15 @@
 package com.yacineDev.demo.module;
 
 public class LoginRequest {
-    private String username;
+    private long idEmployee;
     private String password;
 
-    public String getUsername() {
-        return username;
+    public long getIdEmployee() {
+        return idEmployee;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setIdEmployee(long idEmployee) {
+        this.idEmployee = idEmployee;
     }
 
     public String getPassword() {
