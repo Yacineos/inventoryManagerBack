@@ -40,6 +40,12 @@ public class ContientController {
         return new ResponseEntity<>(contients,HttpStatus.OK);
     }
 
+    @GetMapping("findNbElementByIdCommande/{id}")
+    public ResponseEntity<Integer> findNbElementByIdCommande(@PathVariable("id") Long id){
+        int nbElement = contientService.findNbElementByIdCommande(id);
+        return new ResponseEntity<>(nbElement,HttpStatus.OK);
+    }
+
     @PostMapping("/addContient")
     public void addContient(@RequestBody Contient contient){
         contientService.addContient(contient.getId().getIdCommande(), contient.getId().getIdProduit(), contient.getQte_produit());
@@ -49,6 +55,7 @@ public class ContientController {
     public void deleteContientByIdCommande(@PathVariable("id") Long id){
         contientService.deleteContientByIdCommande(id);
     }
+
 
     @PostMapping("/update")
     public void updateContient(@RequestBody Contient contient){

@@ -30,5 +30,8 @@ public class CommandeService {
 
         commandeRepo.addCommande(currentDate,commande.getId_client(),commande.getIdE(),commande.getId_commande());
     }
+    public int findLastId(){
+        return commandeRepo.findLastId();
+    }
 
 }

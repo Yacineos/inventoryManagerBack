@@ -47,4 +47,9 @@ public class ContientService {
         contientRepo.updateContient(quantite,id_commande,id_produit);
     }
 
+    @Transactional
+    public int findNbElementByIdCommande(Long id){
+        return contientRepo.findContientByIdCommande(id).size();
+    }
+
 }

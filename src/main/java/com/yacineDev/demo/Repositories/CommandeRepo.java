@@ -19,4 +19,7 @@ public interface CommandeRepo extends JpaRepository<Commande,Long> {
     @Transactional
     @Query(value="INSERT INTO commande (date_commande , id_client , idE) VALUES (?1,?2,?3)",nativeQuery = true)
     void addCommande(Date date_commande , Long id_client , Long idE, Long id_commande );
+
+    @Query(value="SELECT MAX(id_commande) FROM commande",nativeQuery = true)
+    int findLastId();
 }

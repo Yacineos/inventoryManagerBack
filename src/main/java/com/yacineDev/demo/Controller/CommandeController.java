@@ -24,12 +24,19 @@ public class CommandeController {
         return new ResponseEntity<>(commandes, HttpStatus.OK);
     }
 
+    @GetMapping("/lastId")
+    public ResponseEntity<Integer> getLastId(){
+        int lastId = commandeService.findLastId();
+        return new ResponseEntity<>(lastId, HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Commande> addCommande(@RequestBody Commande commande){
         Commande newCommande = null ;
         commandeService.addCommande(commande);
         return new ResponseEntity<>(newCommande, HttpStatus.CREATED);
     }
+
 
 }
 
