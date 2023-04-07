@@ -40,6 +40,9 @@ public interface EmployeeRepo extends JpaRepository<Employee,Long> {
     @Query(value="SELECT * FROM employee WHERE idE = ?1 AND mot_de_passe = ?2",nativeQuery = true)
     Optional<Employee> findByIdAndPassword(long idEmployee,String password);
 
+    @Query(value="SELECT * FROM employee WHERE idE = ?1",nativeQuery = true)
+    Optional<Employee> findEmployeeByIdE(long id);
+
     @Query(value="SELECT r.nomR FROM employee e JOIN concerne c ON e.idE= c.idE JOIN role r ON c.idR = r.idR WHERE e.idE = ?1",nativeQuery = true)
     String getEmployeeRole(BigInteger id);
 

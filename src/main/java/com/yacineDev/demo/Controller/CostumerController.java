@@ -43,13 +43,13 @@ public class CostumerController {
         List<Costumer> costumers = costumerService.findAllCostumersOrderedByEmailDESC();
         return new ResponseEntity<>(costumers,HttpStatus.OK);
     }
-    /*
+
     @GetMapping("/find/{id}")
-    public ResponseEntity<Costumer> getCostumerById(@PathVariable("id") Long id) {
-        Costumer costumer = costumerService.findCostumerById(id);
-        return new ResponseEntity<>(costumer, HttpStatus.OK);
+    public ResponseEntity<List<Costumer>> getCostumerByIdOrPhone(@PathVariable("id") long idOrPhone) {
+        List<Costumer> costumers = costumerService.findAllClientsByIdOrPhone(idOrPhone);
+        return new ResponseEntity<>(costumers, HttpStatus.OK);
     }
-    */
+
     @GetMapping("/findCostumers/{input}")
     public ResponseEntity<List<Costumer>> getCostumerByInput(@PathVariable("input") String input) {
         List<Costumer> costumers = costumerService.findCostumersByInput(input);

@@ -32,6 +32,9 @@ public interface CostumerRepo extends JpaRepository<Costumer,Long> {
 
     @Query(value="SELECT * FROM client WHERE nom LIKE %?1% OR prenom LIKE %?1% OR email LIKE %?1%",nativeQuery = true)
     List<Costumer> findCostumersByInput(String input);
+
+    @Query(value="SELECT * FROM client WHERE n_tel = ?1 OR id= ?1 ",nativeQuery = true)
+    List<Costumer> findCostumersByIdOrPhone(long idOrPhone);
     @Modifying
     @Transactional
     @Query(value="DELETE FROM client WHERE id = ?1",nativeQuery = true)

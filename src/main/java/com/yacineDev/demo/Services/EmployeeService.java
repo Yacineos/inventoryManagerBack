@@ -54,4 +54,9 @@ public class EmployeeService {
     public String getEmployeeRole(BigInteger id){
         return employeeRepo.getEmployeeRole(id);
     }
+
+    public Employee findEmployeeById(Long id){
+        return employeeRepo.findEmployeeByIdE(id)
+                .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
+    }
 }

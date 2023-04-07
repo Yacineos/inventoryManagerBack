@@ -50,6 +50,12 @@ public class EmployeeController {
         List<Employee> employees = employeeService.findEmployeesByInput(input);
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id){
+        Employee employee = employeeService.findEmployeeById(id);
+        return new ResponseEntity<>(employee,HttpStatus.OK);
+    }
     @GetMapping("/find/role/{id}")
     public ResponseEntity<String> getEmployeeRole(@PathVariable("id") BigInteger id){
         String role = employeeService.getEmployeeRole(id);

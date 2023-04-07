@@ -47,6 +47,10 @@ public class CostumerService {
         return costumerRepo.findAllClientOrderedByEmailDESC();
     }
     @Transactional
+    public List<Costumer> findAllClientsByIdOrPhone(long idOrPhone){
+        return costumerRepo.findCostumersByIdOrPhone(idOrPhone);
+    }
+    @Transactional
     public List<Costumer> findCostumersByInput(String input){
         return costumerRepo.findCostumersByInput(input);
     }
