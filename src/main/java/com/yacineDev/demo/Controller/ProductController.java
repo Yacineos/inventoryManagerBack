@@ -69,6 +69,12 @@ public class ProductController {
         List<Product> products = productService.findProductsByInput(input);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+    @GetMapping("/find/id/{id}")
+    public ResponseEntity<List<Product>> findProductById(@PathVariable("id") Long id){
+        List<Product> product = productService.findListProductsById(id);
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<List<Product>> addProduct(@RequestBody Product product){
         Product newProduct = productService.addProduct(product);
@@ -87,9 +93,9 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/subtractQuantity/{id}/{qte}")
-    public ResponseEntity<List<Product>> subtractQuantity(@PathVariable("id") Long id,@PathVariable("qte") int qte){
-        productService.subtractQuantity(qte,id);
+    @PostMapping("/subtractQuantity")
+    public ResponseEntity<List<Product>> subtractQuantity(@RequestBody Product product){
+        productService.subtractQuantity(product.getQuantity(),product.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -81,6 +81,9 @@ public class ProductService {
     public Product findProductById(Long id){
         return productRepo.findProductById(id).orElseThrow(() -> new ProductNotFoundException("Product By id : "+id+" was not found "));
     }
+    public List<Product> findListProductsById(Long id){
+        return productRepo.findListProductsById(id);
+    }
 
     public void deleteProduct(Long id){
         productRepo.deleteProductById(id);

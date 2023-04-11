@@ -30,12 +30,27 @@ public class CommandeController {
         return new ResponseEntity<>(lastId, HttpStatus.OK);
     }
 
+    @GetMapping("/findIdClient/{id}")
+    public ResponseEntity<Integer> findIdClientByIdCommande(@PathVariable("id") Long id){
+        int idClient = commandeService.findIdClientByIdCommande(id);
+        return new ResponseEntity<>(idClient, HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Commande> addCommande(@RequestBody Commande commande){
         Commande newCommande = null ;
         commandeService.addCommande(commande);
         return new ResponseEntity<>(newCommande, HttpStatus.CREATED);
     }
+
+    @PutMapping("/modify")
+    public ResponseEntity<Commande> modifyCommande(@RequestBody Commande commande){
+        Commande newCommande = null ;
+        commandeService.modifyCommande(commande);
+        return new ResponseEntity<>(newCommande, HttpStatus.CREATED);
+    }
+
+
 
 
 }

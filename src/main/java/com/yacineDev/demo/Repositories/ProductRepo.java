@@ -35,6 +35,8 @@ public interface ProductRepo extends JpaRepository<Product,Long> {
     @Query(value="SELECT * FROM produit WHERE id_produit = ?1",nativeQuery = true)
     Optional<Product> findProductById(Long id);
 
+    @Query(value="SELECT * FROM produit WHERE id_produit = ?1",nativeQuery = true)
+    List<Product> findListProductsById(Long id);
 
     @Modifying
     @Transactional
