@@ -1,7 +1,9 @@
 package com.yacineDev.demo.Services;
 
+import com.yacineDev.demo.Mapper.CommandeDTOMapper;
 import com.yacineDev.demo.Repositories.CommandeRepo;
 import com.yacineDev.demo.module.Commande;
+import com.yacineDev.demo.module.CommandeDTO;
 import com.yacineDev.demo.module.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CommandeService {
@@ -40,5 +43,12 @@ public class CommandeService {
     public int findIdClientByIdCommande(Long id_commande){
         return commandeRepo.findIdClientByIdCommande(id_commande);
     }
+    public List<?> getCommandeInformation(Long id){
+        List<?> test = commandeRepo.getCommandeInformation_Named(id);
+        System.out.println("hello");
+        return test;
+
+    }
+
 
 }

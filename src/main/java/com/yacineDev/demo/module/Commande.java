@@ -1,9 +1,6 @@
 package com.yacineDev.demo.module;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import javax.print.attribute.standard.DateTimeAtCreation;
 import java.io.Serializable;
