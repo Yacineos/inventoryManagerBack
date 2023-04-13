@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,7 +48,94 @@ public class CommandeService {
         List<?> test = commandeRepo.getCommandeInformation_Named(id);
         System.out.println("hello");
         return test;
+    }
+    public List<Double> statistics(){
+        List<Double> statistics = new ArrayList<>();
 
+        Double beneficeWeek = commandeRepo.beneficeLastWeek();
+        if(beneficeWeek == null){
+            beneficeWeek = 0.0;
+        }
+        statistics.add(beneficeWeek);
+
+        Double beneficeWeekBefore = commandeRepo.beneficeWeekBefore();
+        if(beneficeWeekBefore == null){
+            beneficeWeekBefore = 0.0;
+        }
+        statistics.add(beneficeWeekBefore);
+
+        Double caWeek = commandeRepo.chiffreAffaireLastWeek();
+        if(caWeek == null){
+            caWeek = 0.0;
+        }
+
+        statistics.add(caWeek);
+
+        Double caWeekBefore = commandeRepo.chiffreAffaireWeekBefore();
+        if(caWeekBefore == null){
+            caWeekBefore = 0.0;
+        }
+
+        statistics.add(caWeekBefore);
+
+
+        Double beneficeMonth = commandeRepo.beneficeLastMonth();
+        if(beneficeMonth == null){
+            beneficeMonth = 0.0;
+        }
+
+        statistics.add(beneficeMonth);
+
+        Double beneficeMonthBefore = commandeRepo.beneficeMonthBefore();
+        if(beneficeMonthBefore == null){
+            beneficeMonthBefore = 0.0;
+        }
+
+        statistics.add(beneficeMonthBefore);
+
+        Double caMonth = commandeRepo.chiffreAffaireLastMonth();
+        if(caMonth == null){
+            caMonth = 0.0;
+        }
+
+        statistics.add(caMonth);
+
+        Double caMonthBefore = commandeRepo.chiffreAffaireMonthBefore();
+        if(caMonthBefore == null){
+            caMonthBefore = 0.0;
+        }
+
+        statistics.add(caMonthBefore);
+
+        Double beneficeYear = commandeRepo.beneficeLastYear();
+        if(beneficeYear == null){
+            beneficeYear = 0.0;
+        }
+
+        statistics.add(beneficeYear);
+
+        Double beneficeYearBefore = commandeRepo.beneficeYearBefore();
+        if(beneficeYearBefore == null){
+            beneficeYearBefore = 0.0;
+        }
+
+        statistics.add(beneficeYearBefore);
+
+        Double caYear = commandeRepo.chiffreAffaireLastYear();
+        if(caYear == null){
+            caYear = 0.0;
+        }
+
+        statistics.add(caYear);
+
+        Double caYearBefore = commandeRepo.chiffreAffaireYearBefore();
+        if(caYearBefore == null){
+            caYearBefore = 0.0;
+        }
+
+        statistics.add(caYearBefore);
+
+        return statistics;
     }
 
 

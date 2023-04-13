@@ -34,4 +34,44 @@ public interface CommandeRepo extends JpaRepository<Commande,Long> {
 
     @Query(value = "SELECT produit.id_produit as id, produit.nom as nom , produit.prix_unitaire as prix , contient.qte_produit as qte , (produit.prix_unitaire * contient.qte_produit) as total FROM produit JOIN contient ON contient.id_produit=produit.id_produit JOIN commande ON commande.id_commande = contient.id_commande WHERE commande.id_commande= ?1" ,nativeQuery = true)
     List<?> getCommandeInformation_Named(Long id_commande);
+
+    @Query(value="SELECT * FROM benefice_last_month",nativeQuery = true)
+    Double beneficeLastMonth();
+
+    @Query(value="SELECT * FROM chiffre_affaire_last_month",nativeQuery = true)
+    Double chiffreAffaireLastMonth();
+
+    @Query(value="SELECT * FROM chiffre_affaire_month_before ",nativeQuery = true)
+    Double chiffreAffaireMonthBefore();
+
+    @Query(value="SELECT * FROM benefice_month_before",nativeQuery = true)
+    Double beneficeMonthBefore();
+
+    @Query(value="SELECT * FROM benefice_last_year",nativeQuery = true)
+    Double beneficeLastYear();
+
+    @Query(value="SELECT * FROM chiffre_affaire_last_year",nativeQuery = true)
+    Double chiffreAffaireLastYear();
+
+    @Query(value="SELECT * FROM chiffre_affaire_year_before",nativeQuery = true)
+    Double chiffreAffaireYearBefore();
+
+    @Query(value="SELECT * FROM benefice_year_before",nativeQuery = true)
+    Double beneficeYearBefore();
+
+    @Query(value="SELECT * FROM benefice_last_week",nativeQuery = true)
+    Double beneficeLastWeek();
+
+    @Query(value="SELECT * FROM chiffre_affaire_last_week",nativeQuery = true)
+    Double chiffreAffaireLastWeek();
+
+    @Query(value="SELECT * FROM chiffre_affaire_week_before",nativeQuery = true)
+    Double chiffreAffaireWeekBefore();
+
+    @Query(value="SELECT * FROM benefice_week_before",nativeQuery = true)
+    Double beneficeWeekBefore();
+
+
+
+
 }

@@ -43,6 +43,13 @@ public class CommandeController {
         return new ResponseEntity<>(commandeInfos, HttpStatus.OK);
     }
 
+    @GetMapping("/statistics")
+    public ResponseEntity<List<Double>> getStatistics() throws SQLException {
+        List<Double> statistics = commandeService.statistics();
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
+    }
+
+
     @PostMapping("/add")
     public ResponseEntity<Commande> addCommande(@RequestBody Commande commande){
         Commande newCommande = null ;
@@ -56,6 +63,8 @@ public class CommandeController {
         commandeService.modifyCommande(commande);
         return new ResponseEntity<>(newCommande, HttpStatus.CREATED);
     }
+
+
 
 
 
