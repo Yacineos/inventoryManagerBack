@@ -22,4 +22,14 @@ public class RoleService {
         return roleRepo.findAllrole() ;
     }
 
+    @Transactional
+    public String findRoleById(Long id){
+        return roleRepo.findRoleById(id);
+    }
+
+    @Transactional
+    public Integer findRoleByIdEmployee(Long id){
+        return roleRepo.findRoleByIdEmployee(id).orElse(null);
+    }
+
 }

@@ -28,4 +28,16 @@ public class RoleController {
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }
 
+    @GetMapping("/findRoleById/{id}")
+    public ResponseEntity<String> findRoleById(@PathVariable("id") Long id){
+        String role = roleService.findRoleById(id);
+        return new ResponseEntity<>(role,HttpStatus.OK);
+    }
+
+    @GetMapping("/findRoleByIdEmployee/{id}")
+    public ResponseEntity<Integer> findRoleByIdEmployee(@PathVariable("id") Long id){
+        Integer role = roleService.findRoleByIdEmployee(id);
+        return new ResponseEntity<>(role,HttpStatus.OK);
+    }
+
 }
