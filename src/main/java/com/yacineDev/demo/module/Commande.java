@@ -22,6 +22,9 @@ public class Commande implements Serializable {
     @Column(name="idE")
     private Long idE;
 
+    public Commande() {
+    }
+
     public Commande(Long id_commande, Date date_commande, Long id_client, Long idE) {
         this.id_commande = id_commande;
         this.date_commande = date_commande;
@@ -29,7 +32,8 @@ public class Commande implements Serializable {
         this.idE = idE;
     }
 
-    public Commande() {
+    public Commande(Long idE) {
+        this.idE = idE;
     }
 
     public Long getId_commande() {

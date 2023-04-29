@@ -16,32 +16,36 @@ public class Employee implements Serializable {
     private String nom ;
     @Column(name = "prenom")
     private String prenom;
-    @Column(name="nTel")
+    @Column(name="n_tel")
     private String nTel;
 
-    @Column(name="nomUtilisateur")
+    @Column(name="nom_utilisateur")
     private String nomUtilisateur;
 
-    @Column(name="motDePasse")
+    @Column(name="mot_de_passe")
     private String motDePasse;
 
-    @Column(name="numeroRue")
+    @Column(name="numero_rue")
     private Integer numRue;
 
-    @Column(name="nomRue")
+    @Column(name="nom_rue")
     private String nomRue;
 
-    @Column(name="codePostal")
+    @Column(name="code_postal")
     private int codePostal;
 
     @Column(name="ville")
     private String ville;
 
+    @Column(name="id_manager")
+    private Long id_manager;
+
     public Employee(){
 
     }
-    public Employee(Long id, String email, String nom, String prenom, String nTel, String nomUtilisateur, String motDePasse, int numRue, String nomRue, int codePostal, String ville) {
-        this.idE = id;
+
+    public Employee(Long idE, String email, String nom, String prenom, String nTel, String nomUtilisateur, String motDePasse, Integer numRue, String nomRue, int codePostal, String ville, Long id_manager) {
+        this.idE = idE;
         this.email = email;
         this.nom = nom;
         this.prenom = prenom;
@@ -52,6 +56,7 @@ public class Employee implements Serializable {
         this.nomRue = nomRue;
         this.codePostal = codePostal;
         this.ville = ville;
+        this.id_manager = id_manager;
     }
 
     public Long getIdE() {
@@ -70,7 +75,7 @@ public class Employee implements Serializable {
         this.email = email;
     }
 
-    public String getName() {
+    public String getName   () {
         return nom;
     }
 
@@ -142,20 +147,11 @@ public class Employee implements Serializable {
         this.ville = ville;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + idE +
-                ", email='" + email + '\'' +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", phone='" + nTel + '\'' +
-                ", nomUtilisateur='" + nomUtilisateur + '\'' +
-                ", motDePasse='" + motDePasse + '\'' +
-                ", numRue=" + numRue +
-                ", nomRue='" + nomRue + '\'' +
-                ", codePostal=" + codePostal +
-                ", ville='" + ville + '\'' +
-                '}';
+    public Long getId_manager() {
+        return id_manager;
+    }
+
+    public void setId_manager(Long id_manager) {
+        this.id_manager = id_manager;
     }
 }

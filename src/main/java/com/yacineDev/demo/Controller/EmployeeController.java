@@ -77,6 +77,11 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/all/managers")
+    public ResponseEntity<List<?>> getAllManagers(){
+        List<?> employees = employeeService.getAllManagers();
+        return new ResponseEntity<>(employees,HttpStatus.OK);
+    }
 
 
 
