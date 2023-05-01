@@ -36,7 +36,7 @@ public interface EmployeeRepo extends JpaRepository<Employee,Long> {
     @Query(value="SELECT * FROM employee ORDER BY email",nativeQuery = true)
     List<Employee> findAllEmployeesOrderedByEmail();
 
-    @Query(value="SELECT * FROM employee WHERE nom_utilisateur LIKE %?1% OR nom LIKE %?1% OR prenom LIKE %?1% OR email LIKE %?1%",nativeQuery = true)
+    @Query(value="SELECT * FROM employee WHERE nom LIKE %?1% OR prenom LIKE %?1% OR email LIKE %?1%",nativeQuery = true)
     List<Employee> findEmployeesByInput(String input);
 
     @Query(value="SELECT * FROM employee WHERE idE = ?1 AND mot_de_passe = ?2",nativeQuery = true)

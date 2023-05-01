@@ -27,6 +27,12 @@ public interface ContientRepo extends JpaRepository<Contient,Long> {
     @Query(value="DELETE FROM contient WHERE id_commande = ?1",nativeQuery = true)
     void deleteContientByIdCommande(Long id);
 
+
+    @Modifying
+    @Transactional
+    @Query(value="DELETE FROM contient WHERE id_commande = ?1 AND id_produit = ?2",nativeQuery = true)
+    void deleteProductFromContientByIdCommandeAndIdProduit(Long id_commande,Long id_produit);
+
     @Modifying
     @Transactional
     @Query(value="UPDATE contient SET qte_produit = ?1 WHERE id_commande = ?2 AND id_produit = ?3",nativeQuery = true)

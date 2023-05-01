@@ -56,6 +56,12 @@ public class ContientController {
         contientService.deleteContientByIdCommande(id);
     }
 
+    @DeleteMapping("/deleteContientByIdCommandeAndIdProduit/{id}/{idProduit}")
+    public void deleteContientByIdCommandeAndIdProduit(@PathVariable("id") Long id, @PathVariable("idProduit") Long idProduit){
+        contientService.deleteProductFromContientByIdCommandeAndIdProduit(id,idProduit);
+    }
+
+
 
     @PostMapping("/update")
     public void updateContient(@RequestBody Contient contient){

@@ -52,4 +52,9 @@ public class ContientService {
         return contientRepo.findContientByIdCommande(id).size();
     }
 
+    @Transactional
+    public void deleteProductFromContientByIdCommandeAndIdProduit(Long id_commande,Long id_produit){
+        contientRepo.deleteProductFromContientByIdCommandeAndIdProduit(id_commande,id_produit);
+    }
+
 }
