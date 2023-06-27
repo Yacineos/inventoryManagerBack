@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepo extends JpaRepository<Product,Long> {
+    @Transactional
+    @Modifying
     @Query(value="DELETE FROM produit WHERE id_produit = ?1",nativeQuery = true)
     void deleteProductById(Long id);
     @Query(value="SELECT * FROM produit",nativeQuery = true)

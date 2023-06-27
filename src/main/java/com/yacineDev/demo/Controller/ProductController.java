@@ -99,6 +99,11 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<List<Product>> deleteProduct(@PathVariable("id") Long id){
+        productService.deleteProduct(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
 }
